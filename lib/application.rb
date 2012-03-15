@@ -12,10 +12,19 @@ class JsonInMyCocoa
         win << label(text: 'JSON PP', layout: {start: false})
         text = text_field( layout: {start: false}, frame: [0, 0, 480, 300])
         win << text  
+        status_text = text_field(text: 'status: ', layout: {start: false}, enabled: false, frame: [0, 0, 480, 30])
+        win << status_text
         win << button(title: 'Prettify') do |b|
           b.on_action do
-            rubyified = JSON.parse("#{text.stringValue}")
-            text.text = JSON.pretty_generate rubyified
+            begin
+              rubyified = JSON.parse("#{text.stringValue}")
+              text.text = JSON.pretty_generate rubyified
+            rescue JSON::ParserError => e
+              status_text.text = "status: #{e.message}"
+            else
+              status_text.text = "status: success"
+            end
+            
           end
         end
         win.will_close { exit }
