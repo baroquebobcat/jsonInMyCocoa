@@ -12,7 +12,7 @@ class JsonInMyCocoa
         win << label(text: 'JSON PP', layout: {start: false})
         text = text_field( layout: {start: false}, frame: [0, 0, 300, 300])
         win << text
-        win << button(text: 'Prettify')
+        win << button(title: 'Prettify')
         win.will_close { exit }
       end
     end
