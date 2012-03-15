@@ -1,5 +1,6 @@
 require 'rubygems' # disable this for a deployed application
 require 'hotcocoa'
+require 'json'
 
 class JsonInMyCocoa
   include HotCocoa
@@ -8,7 +9,10 @@ class JsonInMyCocoa
     application name: 'JsonInMyCocoa' do |app|
       app.delegate = self
       window frame: [100, 100, 500, 500], title: 'JsonInMyCocoa' do |win|
-        win << label(text: 'Hello from HotCocoa', layout: {start: false})
+        win << label(text: 'JSON PP', layout: {start: false})
+        text = text_field( layout: {start: false}, frame: [0, 0, 300, 300])
+        win << text
+        win << button(text: 'Prettify')
         win.will_close { exit }
       end
     end
