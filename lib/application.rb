@@ -1,6 +1,6 @@
 require 'rubygems' # disable this for a deployed application
 require 'hotcocoa'
-require 'json'
+require 'json/pure'
 
 class JsonInMyCocoa
   include HotCocoa
@@ -10,9 +10,14 @@ class JsonInMyCocoa
       app.delegate = self
       window frame: [100, 100, 500, 500], title: 'JsonInMyCocoa' do |win|
         win << label(text: 'JSON PP', layout: {start: false})
-        text = text_field( layout: {start: false}, frame: [0, 0, 300, 300])
-        win << text
-        win << button(title: 'Prettify')
+        text = text_field( layout: {start: false}, frame: [0, 0, 480, 300])
+        win << text  
+        win << button(title: 'Prettify') do |b|
+          b.on_action do
+            rubyified = JSON.parse("#{text.stringValue}")
+            text.text = JSON.pretty_generate rubyified
+          end
+        end
         win.will_close { exit }
       end
     end
