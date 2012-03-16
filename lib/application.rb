@@ -27,7 +27,7 @@ class JsonInMyCocoa
         win << label(text: 'JSON PP', layout: {start: false})
         text = text_field( layout: {start: false}, frame: [0, 0, 480, 300])
         win << text  
-        status_text = text_field(text: 'status: ', layout: {start: false}, enabled: false, frame: [0, 0, 480, 30])
+        status_text = text_field(text: 'status: ', layout: {start: false}, enabled: false, frame: [0, 0, 480, 60])
         win << status_text
         win << button(title: 'Prettify') do |b|
           b.on_action do
