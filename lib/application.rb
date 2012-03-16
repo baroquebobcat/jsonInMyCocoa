@@ -1,10 +1,25 @@
 require 'rubygems' # disable this for a deployed application
 require 'hotcocoa'
-require 'json/pure'
+require 'json/pure' # ext version has bugs
+
+# IGNORE previously used [ \t\n\r]+, which doesn't do unicode spaces and so blew up
+JSON::Pure::Parser::IGNORE                = %r(
+        (?:
+         //[^\n\r]*[\n\r]| # line comments
+         /\*               # c-style comments
+         (?:
+          [^*/]|        # normal chars
+          /[^*]|        # slashes that do not start a nested comment
+          \*[^/]|       # asterisks that do not end this comment
+          /(?=\*/)      # single slash before this comment's end
+         )*
+           \*/               # the End of this comment
+           |\s+       # whitespaces: now with unicode support! nh
+        )+
+      )mx
 
 class JsonInMyCocoa
   include HotCocoa
-
   def start
     application name: 'JsonInMyCocoa' do |app|
       app.delegate = self
