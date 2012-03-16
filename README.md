@@ -29,6 +29,7 @@ This is a demo app I've been using to learn more about MacRuby and HotCocoa. It 
 * NSString != String -- http://www.macruby.org/trac/ticket/726 http://www.macruby.org/trac/ticket/1310
 
 ## apple dev references ( I don't know cococa-fu)
+
 * https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/ApplicationKit/Classes/NSTextField_Class/Reference/Reference.html
 * https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/ApplicationKit/Classes/nsbutton_Class/Reference/Reference.html
 * https://developer.apple.com/library/ios/#DOCUMENTATION/UIKit/Reference/UILabel_Class/Reference/UILabel.html
