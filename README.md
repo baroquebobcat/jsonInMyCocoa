@@ -12,6 +12,7 @@ currently doesn't do ⌘V pasting, you'll have to right/control click to paste.
   rvm install macruby
   rvm use --create macruby@my_json_gemset
   gem install bundler
+  gem install hotcocoa # I had a problem installing this w/ bundler
   bundle
   rake run
 ```
